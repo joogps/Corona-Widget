@@ -13,7 +13,38 @@
 		2744492F24A2AB6700061ADA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2744491A24A2AB6600061ADA /* ContentView.swift */; };
 		2744493024A2AB6700061ADA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2744491B24A2AB6700061ADA /* Assets.xcassets */; };
 		2744493124A2AB6700061ADA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2744491B24A2AB6700061ADA /* Assets.xcassets */; };
+		2744495624A2AF6800061ADA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2744494024A2AE3B00061ADA /* WidgetKit.framework */; };
+		2744495724A2AF6800061ADA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2744494224A2AE3B00061ADA /* SwiftUI.framework */; };
+		2744495A24A2AF6800061ADA /* QuickCheckWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2744495924A2AF6800061ADA /* QuickCheckWidget.swift */; };
+		2744495D24A2AF6A00061ADA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2744495C24A2AF6A00061ADA /* Assets.xcassets */; };
+		2744495F24A2AF6A00061ADA /* QuickCheckWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 2744495B24A2AF6800061ADA /* QuickCheckWidget.intentdefinition */; };
+		2744496024A2AF6A00061ADA /* QuickCheckWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 2744495B24A2AF6800061ADA /* QuickCheckWidget.intentdefinition */; };
+		2744496324A2AF6A00061ADA /* QuickCheckWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2744495524A2AF6800061ADA /* QuickCheckWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2744496124A2AF6A00061ADA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2744491424A2AB6500061ADA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2744495424A2AF6800061ADA;
+			remoteInfo = QuickCheckWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2744495024A2AE3C00061ADA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2744496324A2AF6A00061ADA /* QuickCheckWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2744491924A2AB6600061ADA /* CoronaWidgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaWidgetApp.swift; sourceTree = "<group>"; };
@@ -24,6 +55,13 @@
 		2744492824A2AB6700061ADA /* CoronaWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoronaWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2744492A24A2AB6700061ADA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2744492B24A2AB6700061ADA /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		2744494024A2AE3B00061ADA /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		2744494224A2AE3B00061ADA /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		2744495524A2AF6800061ADA /* QuickCheckWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QuickCheckWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2744495924A2AF6800061ADA /* QuickCheckWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCheckWidget.swift; sourceTree = "<group>"; };
+		2744495B24A2AF6800061ADA /* QuickCheckWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = QuickCheckWidget.intentdefinition; sourceTree = "<group>"; };
+		2744495C24A2AF6A00061ADA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2744495E24A2AF6A00061ADA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +79,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2744495224A2AF6800061ADA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2744495724A2AF6800061ADA /* SwiftUI.framework in Frameworks */,
+				2744495624A2AF6800061ADA /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -50,6 +97,8 @@
 				2744491824A2AB6600061ADA /* Shared */,
 				2744492224A2AB6700061ADA /* iOS */,
 				2744492924A2AB6700061ADA /* macOS */,
+				2744495824A2AF6800061ADA /* QuickCheckWidget */,
+				2744493F24A2AE3B00061ADA /* Frameworks */,
 				2744492124A2AB6700061ADA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,6 +118,7 @@
 			children = (
 				2744492024A2AB6700061ADA /* CoronaWidget.app */,
 				2744492824A2AB6700061ADA /* CoronaWidget.app */,
+				2744495524A2AF6800061ADA /* QuickCheckWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,6 +140,26 @@
 			path = macOS;
 			sourceTree = "<group>";
 		};
+		2744493F24A2AE3B00061ADA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2744494024A2AE3B00061ADA /* WidgetKit.framework */,
+				2744494224A2AE3B00061ADA /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2744495824A2AF6800061ADA /* QuickCheckWidget */ = {
+			isa = PBXGroup;
+			children = (
+				2744495924A2AF6800061ADA /* QuickCheckWidget.swift */,
+				2744495B24A2AF6800061ADA /* QuickCheckWidget.intentdefinition */,
+				2744495C24A2AF6A00061ADA /* Assets.xcassets */,
+				2744495E24A2AF6A00061ADA /* Info.plist */,
+			);
+			path = QuickCheckWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -100,10 +170,12 @@
 				2744491C24A2AB6700061ADA /* Sources */,
 				2744491D24A2AB6700061ADA /* Frameworks */,
 				2744491E24A2AB6700061ADA /* Resources */,
+				2744495024A2AE3C00061ADA /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2744496224A2AF6A00061ADA /* PBXTargetDependency */,
 			);
 			name = iOS;
 			productName = iOS;
@@ -127,6 +199,23 @@
 			productReference = 2744492824A2AB6700061ADA /* CoronaWidget.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2744495424A2AF6800061ADA /* QuickCheckWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2744496424A2AF6A00061ADA /* Build configuration list for PBXNativeTarget "QuickCheckWidgetExtension" */;
+			buildPhases = (
+				2744495124A2AF6800061ADA /* Sources */,
+				2744495224A2AF6800061ADA /* Frameworks */,
+				2744495324A2AF6800061ADA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickCheckWidgetExtension;
+			productName = QuickCheckWidgetExtension;
+			productReference = 2744495524A2AF6800061ADA /* QuickCheckWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -140,6 +229,9 @@
 						CreatedOnToolsVersion = 12.0;
 					};
 					2744492724A2AB6700061ADA = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					2744495424A2AF6800061ADA = {
 						CreatedOnToolsVersion = 12.0;
 					};
 				};
@@ -159,6 +251,7 @@
 			targets = (
 				2744491F24A2AB6700061ADA /* iOS */,
 				2744492724A2AB6700061ADA /* macOS */,
+				2744495424A2AF6800061ADA /* QuickCheckWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -180,6 +273,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2744495324A2AF6800061ADA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2744495D24A2AF6A00061ADA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -188,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2744492E24A2AB6700061ADA /* ContentView.swift in Sources */,
+				2744496024A2AF6A00061ADA /* QuickCheckWidget.intentdefinition in Sources */,
 				2744492C24A2AB6700061ADA /* CoronaWidgetApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,7 +303,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2744495124A2AF6800061ADA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2744495A24A2AF6800061ADA /* QuickCheckWidget.swift in Sources */,
+				2744495F24A2AF6A00061ADA /* QuickCheckWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2744496224A2AF6A00061ADA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2744495424A2AF6800061ADA /* QuickCheckWidgetExtension */;
+			targetProxy = 2744496124A2AF6A00061ADA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2744493224A2AB6700061ADA /* Debug */ = {
@@ -318,6 +437,7 @@
 		2744493524A2AB6700061ADA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -340,6 +460,7 @@
 		2744493624A2AB6700061ADA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -408,6 +529,53 @@
 			};
 			name = Release;
 		};
+		2744496524A2AF6A00061ADA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X9NAXV39HG;
+				INFOPLIST_FILE = QuickCheckWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joogps.CoronaWidget.QuickCheckWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2744496624A2AF6A00061ADA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X9NAXV39HG;
+				INFOPLIST_FILE = QuickCheckWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joogps.CoronaWidget.QuickCheckWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -434,6 +602,15 @@
 			buildConfigurations = (
 				2744493824A2AB6700061ADA /* Debug */,
 				2744493924A2AB6700061ADA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2744496424A2AF6A00061ADA /* Build configuration list for PBXNativeTarget "QuickCheckWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2744496524A2AF6A00061ADA /* Debug */,
+				2744496624A2AF6A00061ADA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
