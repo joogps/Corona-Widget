@@ -9,8 +9,8 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-struct Provider: TimelineProvider {
-    public func snapshot(with context: Context, completion: @escaping (CoronaDataEntry) -> ()) {
+struct Provider: IntentTimelineProvider {
+    public func snapshot(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (CoronaDataEntry) -> ()) {
         let currentDate = Date()
         
         CoronaDataLoader.fetch { result in
@@ -23,7 +23,7 @@ struct Provider: TimelineProvider {
         }
     }
 
-    public func timeline(with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    public func timeline(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let currentDate = Date()
         let refreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
 
@@ -141,24 +141,22 @@ struct CoronaData {
 
 struct CoronaDataLoader {
     static func fetch(completion: @escaping (Result<CoronaData, Error>) -> Void) {
-        let coronaDataURL = URL(string: "https://api.covid19api.com/summary")!
-        let task = URLSession.shared.dataTask(with: coronaDataURL) { (data, response, error) in
+        let dataURL = URL(string: "https://api.covid19api.com/summary")!
+        let task = URLSession.shared.dataTask(with: dataURL) { (data, response, error) in
             guard error == nil else {
                 completion(.failure(error!))
                 return
             }
-            let coronaData = getStatistics(fromData: data!)
+            let coronaData = parse(fromData: data!)
             completion(.success(coronaData))
         }
         task.resume()
     }
     
-    static func getStatistics(fromData data: Foundation.Data) -> CoronaData {
+    static func parse(fromData data: Foundation.Data) -> CoronaData {
         let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
         
         let global = json["Global"] as! [String: Any]
-        
-        print(json)
         
         let confirmed = global["TotalConfirmed"] as! Int
         let deaths = global["TotalDeaths"] as! Int
@@ -174,8 +172,9 @@ struct QuickCheckWidget: Widget {
     private let kind: String = "QuickCheckWidget"
 
     public var body: some WidgetConfiguration {
-        StaticConfiguration(
+        IntentConfiguration(
             kind: kind,
+            intent: ConfigurationIntent.self,
             provider: Provider(),
             placeholder: QuickCheckPlaceholderView()
         ) { entry in

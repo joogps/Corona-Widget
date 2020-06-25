@@ -15,10 +15,16 @@
 		2744493124A2AB6700061ADA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2744491B24A2AB6700061ADA /* Assets.xcassets */; };
 		2744495624A2AF6800061ADA /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2744494024A2AE3B00061ADA /* WidgetKit.framework */; };
 		2744495724A2AF6800061ADA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2744494224A2AE3B00061ADA /* SwiftUI.framework */; };
-		2744495A24A2AF6800061ADA /* QuickCheckWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2744495924A2AF6800061ADA /* QuickCheckWidget.swift */; };
-		2744495D24A2AF6A00061ADA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2744495C24A2AF6A00061ADA /* Assets.xcassets */; };
 		2744496324A2AF6A00061ADA /* QuickCheckWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2744495524A2AF6800061ADA /* QuickCheckWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		27681CDE24A4407700600C93 /* QuickCheckWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 27681CDD24A4407700600C93 /* QuickCheckWidget.intentdefinition */; };
+		27681D0224A4451300600C93 /* QuickCheckIntentExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 27681CFB24A4451200600C93 /* QuickCheckIntentExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		27681D1624A44A6600600C93 /* QuickCheckWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2744495924A2AF6800061ADA /* QuickCheckWidget.swift */; };
+		27681D1724A44A6600600C93 /* QuickCheckWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 27681CF424A443B800600C93 /* QuickCheckWidget.intentdefinition */; };
+		27681D1824A44A6600600C93 /* QuickCheckWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2744495924A2AF6800061ADA /* QuickCheckWidget.swift */; };
+		27681D1924A44A6600600C93 /* QuickCheckWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 27681CF424A443B800600C93 /* QuickCheckWidget.intentdefinition */; };
+		27681D1A24A44A6900600C93 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27681CFD24A4451300600C93 /* IntentHandler.swift */; };
+		27681D1B24A44A6900600C93 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27681CFD24A4451300600C93 /* IntentHandler.swift */; };
+		27681D1C24A44ABC00600C93 /* QuickCheckWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 27681CF424A443B800600C93 /* QuickCheckWidget.intentdefinition */; };
+		27681D1D24A44AD400600C93 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27681CFD24A4451300600C93 /* IntentHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +34,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2744495424A2AF6800061ADA;
 			remoteInfo = QuickCheckWidgetExtension;
+		};
+		27681D0024A4451300600C93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2744491424A2AB6500061ADA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27681CFA24A4451200600C93;
+			remoteInfo = QuickCheckIntentExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -39,6 +52,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				2744496324A2AF6A00061ADA /* QuickCheckWidgetExtension.appex in Embed App Extensions */,
+				27681D0224A4451300600C93 /* QuickCheckIntentExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,7 +74,10 @@
 		2744495924A2AF6800061ADA /* QuickCheckWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCheckWidget.swift; sourceTree = "<group>"; };
 		2744495C24A2AF6A00061ADA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2744495E24A2AF6A00061ADA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27681CDD24A4407700600C93 /* QuickCheckWidget.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = QuickCheckWidget.intentdefinition; sourceTree = "<group>"; };
+		27681CF424A443B800600C93 /* QuickCheckWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = QuickCheckWidget.intentdefinition; sourceTree = "<group>"; };
+		27681CFB24A4451200600C93 /* QuickCheckIntentExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QuickCheckIntentExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		27681CFD24A4451300600C93 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		27681CFF24A4451300600C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +104,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		27681CF824A4451200600C93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -97,6 +121,7 @@
 				2744492224A2AB6700061ADA /* iOS */,
 				2744492924A2AB6700061ADA /* macOS */,
 				2744495824A2AF6800061ADA /* QuickCheckWidget */,
+				27681CFC24A4451300600C93 /* QuickCheckIntentExtension */,
 				2744493F24A2AE3B00061ADA /* Frameworks */,
 				2744492124A2AB6700061ADA /* Products */,
 			);
@@ -118,6 +143,7 @@
 				2744492024A2AB6700061ADA /* CoronaWidget.app */,
 				2744492824A2AB6700061ADA /* CoronaWidget.app */,
 				2744495524A2AF6800061ADA /* QuickCheckWidgetExtension.appex */,
+				27681CFB24A4451200600C93 /* QuickCheckIntentExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,11 +178,20 @@
 			isa = PBXGroup;
 			children = (
 				2744495924A2AF6800061ADA /* QuickCheckWidget.swift */,
-				27681CDD24A4407700600C93 /* QuickCheckWidget.intentdefinition */,
+				27681CF424A443B800600C93 /* QuickCheckWidget.intentdefinition */,
 				2744495C24A2AF6A00061ADA /* Assets.xcassets */,
 				2744495E24A2AF6A00061ADA /* Info.plist */,
 			);
 			path = QuickCheckWidget;
+			sourceTree = "<group>";
+		};
+		27681CFC24A4451300600C93 /* QuickCheckIntentExtension */ = {
+			isa = PBXGroup;
+			children = (
+				27681CFD24A4451300600C93 /* IntentHandler.swift */,
+				27681CFF24A4451300600C93 /* Info.plist */,
+			);
+			path = QuickCheckIntentExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +210,7 @@
 			);
 			dependencies = (
 				2744496224A2AF6A00061ADA /* PBXTargetDependency */,
+				27681D0124A4451300600C93 /* PBXTargetDependency */,
 			);
 			name = iOS;
 			productName = iOS;
@@ -215,6 +251,23 @@
 			productReference = 2744495524A2AF6800061ADA /* QuickCheckWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		27681CFA24A4451200600C93 /* QuickCheckIntentExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27681D0324A4451300600C93 /* Build configuration list for PBXNativeTarget "QuickCheckIntentExtension" */;
+			buildPhases = (
+				27681CF724A4451200600C93 /* Sources */,
+				27681CF824A4451200600C93 /* Frameworks */,
+				27681CF924A4451200600C93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickCheckIntentExtension;
+			productName = QuickCheckIntentExtension;
+			productReference = 27681CFB24A4451200600C93 /* QuickCheckIntentExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -231,6 +284,9 @@
 						CreatedOnToolsVersion = 12.0;
 					};
 					2744495424A2AF6800061ADA = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					27681CFA24A4451200600C93 = {
 						CreatedOnToolsVersion = 12.0;
 					};
 				};
@@ -251,6 +307,7 @@
 				2744491F24A2AB6700061ADA /* iOS */,
 				2744492724A2AB6700061ADA /* macOS */,
 				2744495424A2AF6800061ADA /* QuickCheckWidgetExtension */,
+				27681CFA24A4451200600C93 /* QuickCheckIntentExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -276,7 +333,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2744495D24A2AF6A00061ADA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27681CF924A4451200600C93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +351,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2744492E24A2AB6700061ADA /* ContentView.swift in Sources */,
+				27681D1C24A44ABC00600C93 /* QuickCheckWidget.intentdefinition in Sources */,
+				27681D1D24A44AD400600C93 /* IntentHandler.swift in Sources */,
 				2744492C24A2AB6700061ADA /* CoronaWidgetApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,8 +370,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2744495A24A2AF6800061ADA /* QuickCheckWidget.swift in Sources */,
-				27681CDE24A4407700600C93 /* QuickCheckWidget.intentdefinition in Sources */,
+				27681D1624A44A6600600C93 /* QuickCheckWidget.swift in Sources */,
+				27681D1A24A44A6900600C93 /* IntentHandler.swift in Sources */,
+				27681D1724A44A6600600C93 /* QuickCheckWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27681CF724A4451200600C93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27681D1824A44A6600600C93 /* QuickCheckWidget.swift in Sources */,
+				27681D1B24A44A6900600C93 /* IntentHandler.swift in Sources */,
+				27681D1924A44A6600600C93 /* QuickCheckWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +393,11 @@
 			isa = PBXTargetDependency;
 			target = 2744495424A2AF6800061ADA /* QuickCheckWidgetExtension */;
 			targetProxy = 2744496124A2AF6A00061ADA /* PBXContainerItemProxy */;
+		};
+		27681D0124A4451300600C93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27681CFA24A4451200600C93 /* QuickCheckIntentExtension */;
+			targetProxy = 27681D0024A4451300600C93 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -574,6 +655,49 @@
 			};
 			name = Release;
 		};
+		27681D0424A4451300600C93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X9NAXV39HG;
+				INFOPLIST_FILE = QuickCheckIntentExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joogps.CoronaWidget.QuickCheckIntentExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		27681D0524A4451300600C93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X9NAXV39HG;
+				INFOPLIST_FILE = QuickCheckIntentExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joogps.CoronaWidget.QuickCheckIntentExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -609,6 +733,15 @@
 			buildConfigurations = (
 				2744496524A2AF6A00061ADA /* Debug */,
 				2744496624A2AF6A00061ADA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27681D0324A4451300600C93 /* Build configuration list for PBXNativeTarget "QuickCheckIntentExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27681D0424A4451300600C93 /* Debug */,
+				27681D0524A4451300600C93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
