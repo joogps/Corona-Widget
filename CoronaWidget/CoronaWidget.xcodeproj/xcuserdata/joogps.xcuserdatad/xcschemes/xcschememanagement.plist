@@ -9,20 +9,43 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>QuickCheckWidgetExtension.xcscheme_^#shared#^_</key>
+		<key>QuickCheckIntentHandler.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
-		<key>iOS.xcscheme_^#shared#^_</key>
+		<key>QuickCheckWidget.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>macOS.xcscheme_^#shared#^_</key>
+		<key>iOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>macOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>2744491F24A2AB6700061ADA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2744495424A2AF6800061ADA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2785055024A42B5400A41518</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

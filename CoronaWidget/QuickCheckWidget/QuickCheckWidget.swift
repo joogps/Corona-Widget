@@ -11,20 +11,25 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
     public func snapshot(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (CoronaDataEntry) -> ()) {
-        let fakeData = CoronaData(confirmed: 0, deaths: 0, recovered: 0, total: 1)
-        let entry = CoronaDataEntry(date: Date(), configuration: configuration, data: fakeData)
-        completion(entry)
+        let currentDate = Date()
+        
+        CoronaDataLoader.fetch { result in
+            let data: CoronaData
+            if case .success(let fetchedData) = result { data = fetchedData } else {
+                data = CoronaData(confirmed: 0, deaths: 0, recovered: 0, total: 1)
+            }
+            let entry = CoronaDataEntry(date: currentDate, configuration: configuration, data: data)
+            completion(entry)
+        }
     }
 
     public func timeline(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let currentDate = Date()
-        let refreshDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
+        let refreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
 
         CoronaDataLoader.fetch { result in
             let data: CoronaData
-            if case .success(let fetchedData) = result {
-                data = fetchedData
-            } else {
+            if case .success(let fetchedData) = result { data = fetchedData } else {
                 data = CoronaData(confirmed: 0, deaths: 0, recovered: 0, total: 1)
             }
             let entry = CoronaDataEntry(date: currentDate, configuration: configuration, data: data)
@@ -40,9 +45,23 @@ struct CoronaDataEntry: TimelineEntry {
     public let data: CoronaData
 }
 
-struct PlaceholderView : View {
+struct QuickCheckPlaceholderView : View {
     var body: some View {
-        Text("Placeholder View")
+        HStack {
+            VStack (alignment: .leading) {
+                TitleLabel(text: "Confirmed")
+                NumberLabel(text: "-")
+                Spacer()
+                TitleLabel(text: "Deaths")
+                NumberLabel(text: "-")
+                Spacer()
+                TitleLabel(text: "Recovered")
+                NumberLabel(text: "-")
+            }
+            
+            Spacer()
+            BarView(yellow: 1.0/3.0, red: 1.0/3.0, green: 1.0/3.0).frame(minWidth: 0, maxWidth: 10, minHeight: 0, maxHeight: 200)
+        }.padding(25)
     }
 }
 
@@ -53,13 +72,13 @@ struct QuickCheckWidgetEntryView : View {
         HStack {
             VStack (alignment: .leading) {
                 TitleLabel(text: "Confirmed")
-                NumberLabel(number: entry.data.confirmed)
+                NumberLabel(text: formatNumber(number: entry.data.confirmed))
                 Spacer()
                 TitleLabel(text: "Deaths")
-                NumberLabel(number: entry.data.deaths)
+                NumberLabel(text: formatNumber(number: entry.data.deaths))
                 Spacer()
                 TitleLabel(text: "Recovered")
-                NumberLabel(number: entry.data.recovered)
+                NumberLabel(text: formatNumber(number: entry.data.recovered))
             }
             
             Spacer()
@@ -81,11 +100,15 @@ struct TitleLabel: View {
 }
 
 struct NumberLabel: View {
-    var number: Int
+    var text: String
     var body: some View {
-        Text(String(format: "%d", locale: Locale.current, number))
+        Text(text)
             .font(.system(size: 15, weight: .light))
     }
+}
+
+func formatNumber(number: Int) -> String {
+    return String(format: "%d", locale: Locale.current, number)
 }
 
 func calculateProportion(portion: Int, total: Int) -> CGFloat {
@@ -136,6 +159,8 @@ struct CoronaDataLoader {
         
         let global = json["Global"] as! [String: Any]
         
+        print(json)
+        
         let confirmed = global["TotalConfirmed"] as! Int
         let deaths = global["TotalDeaths"] as! Int
         let recovered = global["TotalRecovered"] as! Int
@@ -154,7 +179,7 @@ struct QuickCheckWidget: Widget {
             kind: kind,
             intent: ConfigurationIntent.self,
             provider: Provider(),
-            placeholder: PlaceholderView()
+            placeholder: QuickCheckPlaceholderView()
         ) { entry in
             QuickCheckWidgetEntryView(entry: entry)
         }
