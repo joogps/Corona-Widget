@@ -17,9 +17,8 @@
 		2744495724A2AF6800061ADA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2744494224A2AE3B00061ADA /* SwiftUI.framework */; };
 		2744495A24A2AF6800061ADA /* QuickCheckWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2744495924A2AF6800061ADA /* QuickCheckWidget.swift */; };
 		2744495D24A2AF6A00061ADA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2744495C24A2AF6A00061ADA /* Assets.xcassets */; };
-		2744495F24A2AF6A00061ADA /* QuickCheckWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 2744495B24A2AF6800061ADA /* QuickCheckWidget.intentdefinition */; };
-		2744496024A2AF6A00061ADA /* QuickCheckWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 2744495B24A2AF6800061ADA /* QuickCheckWidget.intentdefinition */; };
 		2744496324A2AF6A00061ADA /* QuickCheckWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2744495524A2AF6800061ADA /* QuickCheckWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		27681CDE24A4407700600C93 /* QuickCheckWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 27681CDD24A4407700600C93 /* QuickCheckWidget.intentdefinition */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,9 +58,9 @@
 		2744494224A2AE3B00061ADA /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		2744495524A2AF6800061ADA /* QuickCheckWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QuickCheckWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2744495924A2AF6800061ADA /* QuickCheckWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCheckWidget.swift; sourceTree = "<group>"; };
-		2744495B24A2AF6800061ADA /* QuickCheckWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = QuickCheckWidget.intentdefinition; sourceTree = "<group>"; };
 		2744495C24A2AF6A00061ADA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2744495E24A2AF6A00061ADA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27681CDD24A4407700600C93 /* QuickCheckWidget.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = QuickCheckWidget.intentdefinition; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				2744495924A2AF6800061ADA /* QuickCheckWidget.swift */,
-				2744495B24A2AF6800061ADA /* QuickCheckWidget.intentdefinition */,
+				27681CDD24A4407700600C93 /* QuickCheckWidget.intentdefinition */,
 				2744495C24A2AF6A00061ADA /* Assets.xcassets */,
 				2744495E24A2AF6A00061ADA /* Info.plist */,
 			);
@@ -289,7 +288,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2744492E24A2AB6700061ADA /* ContentView.swift in Sources */,
-				2744496024A2AF6A00061ADA /* QuickCheckWidget.intentdefinition in Sources */,
 				2744492C24A2AB6700061ADA /* CoronaWidgetApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,7 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2744495A24A2AF6800061ADA /* QuickCheckWidget.swift in Sources */,
-				2744495F24A2AF6A00061ADA /* QuickCheckWidget.intentdefinition in Sources */,
+				27681CDE24A4407700600C93 /* QuickCheckWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

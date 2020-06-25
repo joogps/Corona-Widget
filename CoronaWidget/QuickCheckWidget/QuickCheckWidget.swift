@@ -9,8 +9,8 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-struct Provider: IntentTimelineProvider {
-    public func snapshot(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (CoronaDataEntry) -> ()) {
+struct Provider: TimelineProvider {
+    public func snapshot(with context: Context, completion: @escaping (CoronaDataEntry) -> ()) {
         let currentDate = Date()
         
         CoronaDataLoader.fetch { result in
@@ -18,12 +18,12 @@ struct Provider: IntentTimelineProvider {
             if case .success(let fetchedData) = result { data = fetchedData } else {
                 data = CoronaData(confirmed: 0, deaths: 0, recovered: 0, total: 1)
             }
-            let entry = CoronaDataEntry(date: currentDate, configuration: configuration, data: data)
+            let entry = CoronaDataEntry(date: currentDate, data: data)
             completion(entry)
         }
     }
 
-    public func timeline(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    public func timeline(with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let currentDate = Date()
         let refreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
 
@@ -32,7 +32,7 @@ struct Provider: IntentTimelineProvider {
             if case .success(let fetchedData) = result { data = fetchedData } else {
                 data = CoronaData(confirmed: 0, deaths: 0, recovered: 0, total: 1)
             }
-            let entry = CoronaDataEntry(date: currentDate, configuration: configuration, data: data)
+            let entry = CoronaDataEntry(date: currentDate, data: data)
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
         }
@@ -41,7 +41,6 @@ struct Provider: IntentTimelineProvider {
 
 struct CoronaDataEntry: TimelineEntry {
     public let date: Date
-    public let configuration: ConfigurationIntent
     public let data: CoronaData
 }
 
@@ -60,7 +59,7 @@ struct QuickCheckPlaceholderView : View {
             }
             
             Spacer()
-            BarView(yellow: 1.0/3.0, red: 1.0/3.0, green: 1.0/3.0).frame(minWidth: 0, maxWidth: 10, minHeight: 0, maxHeight: 200)
+            BarView(yellow: 1.0/3.0, red: 1.0/3.0, green: 1.0/3.0).frame(minWidth: 0, maxWidth: 12.5)
         }.padding(25)
     }
 }
@@ -86,7 +85,7 @@ struct QuickCheckWidgetEntryView : View {
             let yellow = calculateProportion(portion: entry.data.confirmed, total: entry.data.total)
             let red = calculateProportion(portion: entry.data.deaths, total: entry.data.total)
             let green = calculateProportion(portion: entry.data.recovered, total: entry.data.total)
-            BarView(yellow: yellow, red: red, green: green).frame(minWidth: 0, maxWidth: 10, minHeight: 0, maxHeight: 200)
+            BarView(yellow: yellow, red: red, green: green).frame(minWidth: 0, maxWidth: 12.5)
         }.padding(25)
     }
 }
@@ -128,7 +127,7 @@ struct BarView: View {
                 Color.yellow.frame(height: metrics.size.height * yellow)
                 Color.red.frame(height: metrics.size.height * red)
                 Color.green.frame(height: metrics.size.height * green)
-            }.cornerRadius(5)
+            }.clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
         }
     }
 }
@@ -175,9 +174,8 @@ struct QuickCheckWidget: Widget {
     private let kind: String = "QuickCheckWidget"
 
     public var body: some WidgetConfiguration {
-        IntentConfiguration(
+        StaticConfiguration(
             kind: kind,
-            intent: ConfigurationIntent.self,
             provider: Provider(),
             placeholder: QuickCheckPlaceholderView()
         ) { entry in
