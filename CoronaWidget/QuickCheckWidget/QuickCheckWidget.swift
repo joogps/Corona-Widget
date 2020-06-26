@@ -13,12 +13,24 @@ struct Provider: IntentTimelineProvider {
     public func snapshot(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (CoronaDataEntry) -> ()) {
         let currentDate = Date()
         
-        CoronaDataLoader.fetch { result in
-            let data: CoronaData
-            if case .success(let fetchedData) = result { data = fetchedData } else {
-                data = CoronaData(confirmed: 0, deaths: 0, recovered: 0, total: 1)
+        let configurationRegion = configuration.region?.identifier ?? "global"
+        let regionalData = !(configurationRegion == "global")
+        let url = "https://api.covid19api.com/" + (regionalData ?
+            "total/country/\(String(describing: configurationRegion))" :
+            "world/total")
+        
+        CoronaDataLoader.fetch(from: url) { data in
+            var coronaData = CoronaData(confirmed: 0, deaths: 0, recovered: 0, total: 1)
+            
+            if case .success(let fetchedData) = data {
+                CoronaDataLoader.parseSummary(from: fetchedData, regionalData: regionalData) { result in
+                    if case .success(let finalData) = result {
+                        coronaData = finalData
+                    }
+                }
             }
-            let entry = CoronaDataEntry(date: currentDate, data: data)
+            
+            let entry = CoronaDataEntry(date: currentDate, configuration: configuration, data: coronaData)
             completion(entry)
         }
     }
@@ -26,13 +38,25 @@ struct Provider: IntentTimelineProvider {
     public func timeline(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let currentDate = Date()
         let refreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
-
-        CoronaDataLoader.fetch { result in
-            let data: CoronaData
-            if case .success(let fetchedData) = result { data = fetchedData } else {
-                data = CoronaData(confirmed: 0, deaths: 0, recovered: 0, total: 1)
+        
+        let configurationRegion = configuration.region?.identifier ?? "global"
+        let regionalData = !(configurationRegion == "global")
+        let url = "https://api.covid19api.com/" + (regionalData ?
+            "total/country/\(String(describing: configurationRegion))" :
+            "world/total")
+        
+        CoronaDataLoader.fetch(from: url) { data in
+            var coronaData = CoronaData(confirmed: 0, deaths: 0, recovered: 0, total: 1)
+            
+            if case .success(let fetchedData) = data {
+                CoronaDataLoader.parseSummary(from: fetchedData, regionalData: regionalData) { result in
+                    if case .success(let finalData) = result {
+                        coronaData = finalData
+                    }
+                }
             }
-            let entry = CoronaDataEntry(date: currentDate, data: data)
+            
+            let entry = CoronaDataEntry(date: currentDate, configuration: configuration, data: coronaData)
             let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
             completion(timeline)
         }
@@ -41,6 +65,7 @@ struct Provider: IntentTimelineProvider {
 
 struct CoronaDataEntry: TimelineEntry {
     public let date: Date
+    public let configuration: ConfigurationIntent
     public let data: CoronaData
 }
 
@@ -48,19 +73,18 @@ struct QuickCheckPlaceholderView : View {
     var body: some View {
         HStack {
             VStack (alignment: .leading) {
-                TitleLabel(text: "Confirmed")
-                NumberLabel(text: "-")
+                StatView(text: "Confirmed", number: "-")
                 Spacer()
-                TitleLabel(text: "Deaths")
-                NumberLabel(text: "-")
+                StatView(text: "Deaths", number: "-")
                 Spacer()
-                TitleLabel(text: "Recovered")
-                NumberLabel(text: "-")
+                StatView(text: "Recovered", number: "-")
             }
             
             Spacer()
-            BarView(yellow: 1.0/3.0, red: 1.0/3.0, green: 1.0/3.0).frame(minWidth: 0, maxWidth: 12.5)
-        }.padding(25)
+            
+            let aThird = CGFloat(1.0/3.0)
+            BarView(yellow: aThird, red: aThird, green: aThird).frame(minWidth: 0, maxWidth: 12.5)
+        }.padding(24)
     }
 }
 
@@ -70,14 +94,19 @@ struct QuickCheckWidgetEntryView : View {
     var body: some View {
         HStack {
             VStack (alignment: .leading) {
-                TitleLabel(text: "Confirmed")
-                NumberLabel(text: formatNumber(number: entry.data.confirmed))
-                Spacer()
-                TitleLabel(text: "Deaths")
-                NumberLabel(text: formatNumber(number: entry.data.deaths))
-                Spacer()
-                TitleLabel(text: "Recovered")
-                NumberLabel(text: formatNumber(number: entry.data.recovered))
+                let showTitle = entry.configuration.showTitle != nil && entry.configuration.showTitle == 1
+                let fontSize = CGFloat(showTitle ? 13 : 14)
+                
+                if showTitle {
+                    Text(entry.configuration.region?.displayString ?? "Global").font(.system(size: 14, weight: .heavy))
+                    Spacer()
+                }
+                
+                StatView(text: "Confirmed", number: formatNumber(number: entry.data.confirmed), fontSize: fontSize)
+                if !showTitle { Spacer() }
+                StatView(text: "Deaths", number: formatNumber(number: entry.data.deaths), fontSize: fontSize)
+                if !showTitle { Spacer() }
+                StatView(text: "Recovered", number: formatNumber(number: entry.data.recovered), fontSize: fontSize)
             }
             
             Spacer()
@@ -86,23 +115,22 @@ struct QuickCheckWidgetEntryView : View {
             let red = calculateProportion(portion: entry.data.deaths, total: entry.data.total)
             let green = calculateProportion(portion: entry.data.recovered, total: entry.data.total)
             BarView(yellow: yellow, red: red, green: green).frame(minWidth: 0, maxWidth: 12.5)
-        }.padding(25)
+        }.padding(24)
     }
 }
 
-struct TitleLabel: View {
+struct StatView: View {
     var text: String
+    var number: String
+    var fontSize: CGFloat = 14
+    
     var body: some View {
-        Text(text)
-            .font(.system(size: 15, weight: .bold))
-    }
-}
-
-struct NumberLabel: View {
-    var text: String
-    var body: some View {
-        Text(text)
-            .font(.system(size: 15, weight: .light))
+        VStack(alignment: .leading) {
+            Text(text)
+                .font(.system(size: fontSize, weight: .bold))
+            Text(number)
+                .font(.system(size: fontSize, weight: .light))
+        }
     }
 }
 
@@ -137,34 +165,6 @@ struct CoronaData {
     let deaths: Int
     let recovered: Int
     let total: Int
-}
-
-struct CoronaDataLoader {
-    static func fetch(completion: @escaping (Result<CoronaData, Error>) -> Void) {
-        let dataURL = URL(string: "https://api.covid19api.com/summary")!
-        let task = URLSession.shared.dataTask(with: dataURL) { (data, response, error) in
-            guard error == nil else {
-                completion(.failure(error!))
-                return
-            }
-            let coronaData = parse(fromData: data!)
-            completion(.success(coronaData))
-        }
-        task.resume()
-    }
-    
-    static func parse(fromData data: Foundation.Data) -> CoronaData {
-        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-        
-        let global = json["Global"] as! [String: Any]
-        
-        let confirmed = global["TotalConfirmed"] as! Int
-        let deaths = global["TotalDeaths"] as! Int
-        let recovered = global["TotalRecovered"] as! Int
-        
-        let total = confirmed+deaths+recovered
-        return CoronaData(confirmed: confirmed, deaths: deaths, recovered: recovered, total: total)
-    }
 }
 
 @main

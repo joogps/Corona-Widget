@@ -17,14 +17,15 @@
 		2744495724A2AF6800061ADA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2744494224A2AE3B00061ADA /* SwiftUI.framework */; };
 		2744496324A2AF6A00061ADA /* QuickCheckWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2744495524A2AF6800061ADA /* QuickCheckWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		27681D0224A4451300600C93 /* QuickCheckIntentExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 27681CFB24A4451200600C93 /* QuickCheckIntentExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		27681D1624A44A6600600C93 /* QuickCheckWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2744495924A2AF6800061ADA /* QuickCheckWidget.swift */; };
 		27681D1724A44A6600600C93 /* QuickCheckWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 27681CF424A443B800600C93 /* QuickCheckWidget.intentdefinition */; };
 		27681D1824A44A6600600C93 /* QuickCheckWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2744495924A2AF6800061ADA /* QuickCheckWidget.swift */; };
 		27681D1924A44A6600600C93 /* QuickCheckWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 27681CF424A443B800600C93 /* QuickCheckWidget.intentdefinition */; };
 		27681D1A24A44A6900600C93 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27681CFD24A4451300600C93 /* IntentHandler.swift */; };
 		27681D1B24A44A6900600C93 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27681CFD24A4451300600C93 /* IntentHandler.swift */; };
 		27681D1C24A44ABC00600C93 /* QuickCheckWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 27681CF424A443B800600C93 /* QuickCheckWidget.intentdefinition */; };
-		27681D1D24A44AD400600C93 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27681CFD24A4451300600C93 /* IntentHandler.swift */; };
+		27F944E124A5411000C2FF73 /* CoronaDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F944D824A5408F00C2FF73 /* CoronaDataLoader.swift */; };
+		27F944E224A5411C00C2FF73 /* QuickCheckWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2744495924A2AF6800061ADA /* QuickCheckWidget.swift */; };
+		27F944E524A5453A00C2FF73 /* CoronaDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F944D824A5408F00C2FF73 /* CoronaDataLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		27681CFB24A4451200600C93 /* QuickCheckIntentExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QuickCheckIntentExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		27681CFD24A4451300600C93 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		27681CFF24A4451300600C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27F944D824A5408F00C2FF73 /* CoronaDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaDataLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 		2744495824A2AF6800061ADA /* QuickCheckWidget */ = {
 			isa = PBXGroup;
 			children = (
+				27F944D824A5408F00C2FF73 /* CoronaDataLoader.swift */,
 				2744495924A2AF6800061ADA /* QuickCheckWidget.swift */,
 				27681CF424A443B800600C93 /* QuickCheckWidget.intentdefinition */,
 				2744495C24A2AF6A00061ADA /* Assets.xcassets */,
@@ -352,7 +355,6 @@
 			files = (
 				2744492E24A2AB6700061ADA /* ContentView.swift in Sources */,
 				27681D1C24A44ABC00600C93 /* QuickCheckWidget.intentdefinition in Sources */,
-				27681D1D24A44AD400600C93 /* IntentHandler.swift in Sources */,
 				2744492C24A2AB6700061ADA /* CoronaWidgetApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,7 +372,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27681D1624A44A6600600C93 /* QuickCheckWidget.swift in Sources */,
+				27F944E224A5411C00C2FF73 /* QuickCheckWidget.swift in Sources */,
+				27F944E124A5411000C2FF73 /* CoronaDataLoader.swift in Sources */,
 				27681D1A24A44A6900600C93 /* IntentHandler.swift in Sources */,
 				27681D1724A44A6600600C93 /* QuickCheckWidget.intentdefinition in Sources */,
 			);
@@ -380,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F944E524A5453A00C2FF73 /* CoronaDataLoader.swift in Sources */,
 				27681D1824A44A6600600C93 /* QuickCheckWidget.swift in Sources */,
 				27681D1B24A44A6900600C93 /* IntentHandler.swift in Sources */,
 				27681D1924A44A6600600C93 /* QuickCheckWidget.intentdefinition in Sources */,
