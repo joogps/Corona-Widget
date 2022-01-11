@@ -5,4 +5,4 @@ A simple iOS and macOS widget for checking data about COVID-19.
 
 ***
 
-Icon made by (https://www.flaticon.com/br/autores/freepik)[Freepik] from (https://www.flaticon.com/br/)[www.flaticon.com]
+Icon made by [Freepik](https://www.flaticon.com/br/autores/freepik) from [www.flaticon.com](https://www.flaticon.com/br/)
